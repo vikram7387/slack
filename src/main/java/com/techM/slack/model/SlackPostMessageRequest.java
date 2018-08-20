@@ -1,5 +1,7 @@
 package com.techM.slack.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class SlackPostMessageRequest {
@@ -19,6 +21,17 @@ public class SlackPostMessageRequest {
 	@JsonProperty("message")
 	private Message message;
 	
+	@JsonProperty("attachments")
+	private List<Attachments> attachments;
+	
+	public List<Attachments> getAttachments() {
+		return attachments;
+	}
+
+	public void setAttachments(List<Attachments> attachments) {
+		this.attachments = attachments;
+	}
+
 	public Boolean getOk() {
 		return ok;
 	}

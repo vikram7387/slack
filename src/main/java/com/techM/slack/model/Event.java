@@ -5,8 +5,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Event {
+	
+	 @JsonProperty("username")
+	 private String username;
 
-	 @JsonProperty("type")
+	 public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	@JsonProperty("type")
 	 private String type;
 	 
 	 @JsonProperty("channel")
