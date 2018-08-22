@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +19,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.techM.slack.constant.Constant;
 import com.techM.slack.constant.EndPointReferral;
 import com.techM.slack.model.CacheInfo;
 import com.techM.slack.model.SlackConfiguration;
@@ -91,23 +98,38 @@ public class SlackController {
 	
 	
 	@RequestMapping(value=EndPointReferral.MESSAGE_ACTION,method=RequestMethod.POST,
-			consumes = MediaType.APPLICATION_FORM_URLENCODED, 
-	        produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+			consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE,
+			produces = {MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
-	public SlackResponse dynamicMessages(SelectInteractiveRequest interactiveRequest) {
+	public void dynamicMessages(@RequestBody MultiValueMap<String, String> interactiveRequest1) throws JsonParseException, JsonMappingException, IOException {
 		SlackResponse response=new SlackResponse();
+		String text = null;	
+		System.out.println("+++++++++++++++++++++++++++++++++++++++");
+		System.out.println(new Gson().toJson(interactiveRequest1));
+		System.out.println(new Gson().toJson(interactiveRequest1.get("payload")));
+		System.out.println("first:::"+new Gson().toJson(interactiveRequest1.getFirst("payload")));
+		System.out.println("+++++++++++++++++++++++++++++++++++++++");
+		String json=new Gson().toJson(interactiveRequest1.getFirst("payload"));
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println("JSON:::"+json);
+		final SelectInteractiveRequest interactiveRequest =mapper.readValue(interactiveRequest1.getFirst("payload"), SelectInteractiveRequest.class); 
+		//SelectInteractiveRequest interactiveRequest=null;
 		CacheInfo cacheInfo=CacheInfo.getInstance();
 		System.out.println("+++++++++++++++++++++++++++++++++++++++");
 		System.out.println(new Gson().toJson(interactiveRequest));
 		System.out.println("+++++++++++++++++++++++++++++++++++++++");
-		String text=interactiveRequest.getActions().get(0).getSelected_options().get(0).getValue();
+		String type=interactiveRequest.getActions().get(0).getType();
+		if(StringUtils.equalsIgnoreCase(type, Constant.SELECT)) {
+			text=interactiveRequest.getActions().get(0).getSelected_options().get(0).getValue();	
+		}else if(StringUtils.equalsIgnoreCase(type, Constant.BUTTON)) {
+			text=interactiveRequest.getActions().get(0).getValue();
+		}
 		String message=CacheInfo.getUserDetails(interactiveRequest.getUser().getName());
-		if(!StringUtils.equalsIgnoreCase(message, text)) {
-		CacheInfo.setUserDetail(interactiveRequest.getUser().getName(), text);
+	//	if(!StringUtils.equalsIgnoreCase(message, text)) {
+	//	CacheInfo.setUserDetail(interactiveRequest.getUser().getName(), text);
 
 		response=slackService.postInteractiveMsgResponse(interactiveRequest);
-		}
-		return response;
+	//	}
 	}
 	
 	@RequestMapping(value=EndPointReferral.TEST, method=RequestMethod.POST)

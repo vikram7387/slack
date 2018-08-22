@@ -47,6 +47,17 @@ public class SelectInteractiveRequest {
 	
 	@JsonProperty("actions")
 	private List<Action> actions;
+	
+	@JsonProperty("channel")
+	private Channel channel;
+
+	public Channel getChannel() {
+		return channel;
+	}
+
+	public void setChannel(Channel channel) {
+		this.channel = channel;
+	}
 
 	public String getType() {
 		return type;

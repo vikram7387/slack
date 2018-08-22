@@ -2,6 +2,7 @@ D:\NessaProject\slack\src\main\java\com\techM\slack\constant\NessaURLConstant.ja
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\Assignment_group.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\ICard.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\ShowAllIncidentsDTO.java
+D:\NessaProject\slack\src\main\java\com\techM\slack\model\interactiveComp\Channel.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\KnowledgeBaseServiceNow.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\Result.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\Closed_by.java
@@ -43,6 +44,7 @@ D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\Messages.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\contexts.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\Data.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\Context.java
+D:\NessaProject\slack\src\main\java\com\techM\slack\constant\Custome6.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\RequestDto.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\model\Action.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\RtmNumber.java
@@ -72,6 +74,7 @@ D:\NessaProject\slack\src\main\java\com\techM\slack\serviceIMPL\SlackServiceImpl
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\RtmResult.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\Sys_domain.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\U_resolved_by_group.java
+D:\NessaProject\slack\src\main\java\com\techM\slack\constant\Custome20.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\nessaModel\Opened_by.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\model\CacheInfo.java
 D:\NessaProject\slack\src\main\java\com\techM\slack\model\interactiveComp\User.java

@@ -2,10 +2,12 @@ com\techM\slack\model\Option.class
 com\techM\slack\nessaModel\SkypeForBusiness.class
 com\techM\slack\nessaModel\RitmDetailList.class
 com\techM\slack\model\SlackConfiguration.class
+com\techM\slack\constant\Custome6.class
 com\techM\slack\nessaModel\Company.class
 com\techM\slack\nessaModel\Messages.class
 com\techM\slack\nessaModel\RtmNumber.class
 com\techM\slack\model\interactiveComp\Value.class
+com\techM\slack\constant\Custome20.class
 com\techM\slack\constant\Constant.class
 com\techM\slack\model\interactiveComp\SelectInteractiveRequest.class
 com\techM\slack\nessaModel\Contract.class
@@ -17,6 +19,7 @@ com\techM\slack\nessaModel\Assignment_group.class
 com\techM\slack\model\IncomingWebhook.class
 com\techM\slack\nessaModel\RtmResult.class
 com\techM\slack\HomeController.class
+com\techM\slack\model\interactiveComp\Channel.class
 com\techM\slack\nessaModel\IncidentCreateDto.class
 com\techM\slack\Demo.class
 com\techM\slack\nessaModel\ICard.class

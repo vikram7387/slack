@@ -12,12 +12,26 @@ public class Action {
 	@JsonProperty("name")
 	private String name;
 	
+	@JsonProperty("value")
+	private String value;
+
 	@JsonProperty("text")
     private String text;
 	
 	@JsonProperty("type")
     private String type;
 	
+	@JsonProperty("style")
+	private String style;
+	
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+
 	@JsonProperty("options")
     private List<Option> options; 
 	
@@ -63,5 +77,13 @@ public class Action {
 
 	public void setOptions(List<Option> options) {
 		this.options = options;
+	}
+	
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 }
